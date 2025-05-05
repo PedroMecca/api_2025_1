@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Api20251Application {
 
 	public static void main(String[] args) {
-		//Feito por Pedro Benili e Pedro Bonelli
+		//Feito por Pedro Belini e Pedro Bonelli
 		SpringApplication.run(Api20251Application.class, args);
 	}
 

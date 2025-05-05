@@ -5,11 +5,10 @@ import br.edu.ifsp.prw3.api_2025_1.Repository.ConsertoRepository;
 import br.edu.ifsp.prw3.api_2025_1.dto.DadosConserto;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -37,5 +36,11 @@ public class ConsertoController {
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Erro ao cadastrar conserto: " + e.getMessage());
         }
+    }
+
+    @GetMapping("/todos")
+    public ResponseEntity<Page<Conserto>> listarTodos(Pageable pageable) {
+        Page<Conserto> consertos = consertoRepository.findAllByAtivoTrue(pageable);
+        return ResponseEntity.ok(consertos);
     }
 }
