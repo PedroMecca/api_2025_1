@@ -1,9 +1,5 @@
 package br.edu.ifsp.prw3.api_2025_1.Models;
 
-
-
-
-
 import br.edu.ifsp.prw3.api_2025_1.dto.DadosConserto;
 import jakarta.persistence.*;
 import lombok.*;
@@ -35,6 +31,6 @@ public class Conserto {
         this.dataSaida = dados.dataSaida();
         this.ativo = dados.ativo();
         this.mecanico = new Mecanico(dados.mecanico().nome(), dados.mecanico().anosExperiencia());
-        this.veiculo = new Veiculo(       dados.veiculo().marca(), dados.veiculo().modelo(), dados.veiculo().placa(), dados.veiculo().ano(), dados.veiculo().cor());
+        this.veiculo = new Veiculo(dados.veiculo().marca(), dados.veiculo().modelo(), dados.veiculo().placa(), dados.veiculo().ano(), dados.veiculo().cor());
     }
 }
