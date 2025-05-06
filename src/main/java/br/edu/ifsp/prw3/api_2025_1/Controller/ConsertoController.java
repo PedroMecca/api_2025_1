@@ -2,6 +2,7 @@ package br.edu.ifsp.prw3.api_2025_1.Controller;
 
 import br.edu.ifsp.prw3.api_2025_1.Models.Conserto;
 import br.edu.ifsp.prw3.api_2025_1.Repository.ConsertoRepository;
+import br.edu.ifsp.prw3.api_2025_1.dto.ConsertoResumo;
 import br.edu.ifsp.prw3.api_2025_1.dto.DadosConserto;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -13,6 +14,7 @@ import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/consertos")
@@ -42,5 +44,14 @@ public class ConsertoController {
     public ResponseEntity<Page<Conserto>> listarTodos(Pageable pageable) {
         Page<Conserto> consertos = consertoRepository.findAllByAtivoTrue(pageable);
         return ResponseEntity.ok(consertos);
+    }
+
+    @GetMapping("/resumo")
+    public ResponseEntity<List<ConsertoResumo>> listarResumo() {
+        List<ConsertoResumo> resumo = consertoRepository.findAllByAtivoTrue()
+                .stream()
+                .map(ConsertoResumo::new)
+                .toList();
+        return ResponseEntity.ok(resumo);
     }
 }
