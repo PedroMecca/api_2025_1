@@ -54,4 +54,9 @@ public class ConsertoController {
                 .toList();
         return ResponseEntity.ok(resumo);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Conserto> buscarPorId(@PathVariable Long id) {
+        return ResponseEntity.of(consertoRepository.findById(id));
+    }
 }
