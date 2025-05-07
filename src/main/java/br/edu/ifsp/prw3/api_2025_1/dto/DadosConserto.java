@@ -16,6 +16,6 @@ public record DadosConserto(
 
         @Valid DadosMecanico mecanico,
 
-        @Valid DadosVeiculos veiculo
+        @Valid DadosVeiculo veiculo
 ) {
 }

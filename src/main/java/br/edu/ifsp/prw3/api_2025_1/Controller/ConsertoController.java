@@ -11,7 +11,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
@@ -30,16 +29,12 @@ public class ConsertoController {
     @PostMapping
     @Transactional
     public ResponseEntity<?> cadastrar(@RequestBody @Valid DadosConserto conserto, UriComponentsBuilder uriBuilder) {
-        try {
-            Conserto novoConserto = new Conserto(conserto);
-            consertoRepository.save(novoConserto);
-
-            URI uri = uriBuilder.path("/consertos/{id}").buildAndExpand(novoConserto.getId()).toUri();
-            return ResponseEntity.created(uri).build();
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Erro ao cadastrar conserto: " + e.getMessage());
-        }
+        Conserto novoConserto = new Conserto(conserto);
+        consertoRepository.save(novoConserto);
+        URI uri = uriBuilder.path("/consertos/{id}").buildAndExpand(novoConserto.getId()).toUri();
+        return ResponseEntity.created(uri).build();
     }
+
 
     @GetMapping("/todos")
     public ResponseEntity<Page<Conserto>> listarTodos(Pageable pageable) {

@@ -3,7 +3,7 @@ package br.edu.ifsp.prw3.api_2025_1.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
-public record DadosVeiculos(
+public record DadosVeiculo(
         @NotBlank (message = "Marca do veiculo é obrigatória")
         String marca,
 

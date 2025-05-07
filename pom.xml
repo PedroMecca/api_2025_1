@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.edu.ifsp.prw3</groupId>
-	<artifactId>api_2025_2</artifactId>
+	<artifactId>api_2025_1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>api_2025_2</name>
 	<description>API REST PRW3</description>
